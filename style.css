@@ -1,0 +1,320 @@
+/* BOX-SIZING para que padding no rompa el ancho */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body y html: scroll solo vertical */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000;
+  font-family: 'Tangerine', cursive;
+}
+
+/* Contenedor de la  imagen */
+.contenedor-imagen {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+/* Imagen principal con efecto de desenfoque y brillo */
+.contenedor-imagen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(0.9) blur(5px);
+}
+
+/* Título principal sin efecto de fuego */
+.contenedor-imagen h1 {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: clamp(5.5rem, 6vw, 5rem);
+  color: rgb(235, 215, 102);
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.5),
+    -2px -2px 4px rgba(0, 0, 0, 0.5),
+    -2px 2px 4px rgba(0, 0, 0, 0.5),
+    2px -2px 4px rgba(0, 0, 0, 0.5);
+  font-style: italic;
+  z-index: 2;
+  pointer-events: none; 
+  animation: fadeIn 3s ease-in-out 1 forwards;
+}
+
+/* Animación de inicio parpadeo*/
+@keyframes fadeIn {
+  from { opacity: 0; }   
+  to   { opacity: 1; }  
+}
+
+/* Sección Sobre Nosotros */
+.Sobre-nosotros {
+  width: 100%;
+  margin: 5% auto;
+  text-align: center;
+}
+
+/* Recuadro con el efecto fuego */
+.Sobre-nosotros .recuadro-fuego {
+  padding: 50px 40px;
+  border-radius:30px;
+  width: 96%;
+  max-width: 1200px;
+  min-height: 100px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  position: relative;
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 0 30px #ff6600, 0 0 60px #ff3300, 0 0 90px #ff0000;
+  animation: fuego 1s infinite alternate;
+}
+
+/* Animación de fuego del recuadro */
+@keyframes fuego {
+  0% {
+    box-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300, 0 0 30px #ff0000;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff9900, 0 0 40px #ff6600, 0 0 60px #ff3300;
+  }
+  100% {
+    box-shadow: 0 0 15px #ffcc00, 0 0 30px #ff9900, 0 0 45px #ff6600;
+  }
+}
+
+/* Título dentro del recuadro */
+.Sobre-nosotros .recuadro-fuego h2 {
+  color: orange;
+  font-size: clamp(3.5rem, 4vw, 3.5rem);
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px #ff4d00, 0 0 10px #ff6600, 0 0 20px #ff0000;
+}
+
+/* Párrafo dentro del recuadro */
+.Sobre-nosotros .recuadro-fuego p {
+  font-size: clamp(2.3rem, 2.5vw, 2rem);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Recuadros para servicio 1 */
+.recuadro-servicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
+  border-radius: 15px;                  /* bordes redondeados */
+  padding: 30px 50px 200px, 50px;       /* espacio interno */
+  max-width: 400px;                     /* ancho máximo */
+  min-height: 450px;                     /* altura mínima */    
+  margin: 70px auto;                     /* centrado horizontal */
+  text-align: center;
+  color: #fff;                           /* color del texto */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
+  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
+}
+
+.recuadro-servicio:hover {
+  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
+}
+
+.recuadro-servicio h3 {
+  margin-top :20px; 
+  color: rgb(235, 215, 102);;     /* color del título del primer menu */
+  text-align: center;
+  font-size:clamp(4rem, 4vw, 3.5rem);
+  
+}
+.recuadro-servicio h3 u {
+  text-decoration-color:rgb(235, 215, 102);
+}
+
+.recuadro-servicio p {
+  font-family:Arial, Helvetica, sans-serif;
+  ;
+  font-size: 1.3em;
+  line-height: 1.5;
+}
+.recuadro-servicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
+  border-radius: 15px;                  /* bordes redondeados */
+  padding: 30px 50px 200px, 50px;       /* espacio interno */
+  max-width: 400px;                     /* ancho máximo */
+  min-height: 450px;                     /* altura mínima */    
+  margin: 70px auto;                     /* centrado horizontal */
+  text-align: center;
+  color: #fff;                           /* color del texto */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
+  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
+}
+
+.recuadro-servicio:hover {
+  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
+}
+
+.recuadro-servicio h4 {
+  margin-top :20px; 
+  color: rgb(235, 215, 102);;     /* color del título del segundo  menu */
+  text-align: center;
+  font-size:clamp(4rem, 4vw, 3.5rem);
+  
+}
+.recuadro-servicio h4 u {
+  text-decoration-color:rgb(235, 215, 102);
+}
+
+.recuadro-servicio p {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5;
+}
+.recuadro-servicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
+  border-radius: 15px;                  /* bordes redondeados */
+  padding: 30px 50px 200px, 50px;       /* espacio interno */
+  max-width: 400px;                     /* ancho máximo */
+  min-height: 450px;                     /* altura mínima */    
+  margin: 70px auto;                     /* centrado horizontal */
+  text-align: center;
+  color: #fff;                           /* color del texto */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
+  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
+}
+
+.recuadro-servicio:hover {
+  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
+}
+
+.recuadro-servicio h5 {
+  margin-top :20px; 
+  color: rgb(235, 215, 102);;     /* color del título del tercer  menu */
+  text-align: center;
+  font-size:clamp(4rem, 4vw, 3.5rem);
+  
+}
+.recuadro-servicio h5 u {
+  text-decoration-color:rgb(235, 215, 102);
+}
+
+.recuadro-servicio p {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5;
+}
+
+
+.btnPedido:hover {
+  background-color: #0d0e0e;
+
+}
+.recuadro-servicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
+  border-radius: 15px;                  /* bordes redondeados */
+  padding: 30px 50px 200px, 50px;       /* espacio interno */
+  max-width: 400px;                     /* ancho máximo */
+  min-height: 450px;                     /* altura mínima */    
+  margin: 70px auto;                     /* centrado horizontal */
+  text-align: center;
+  color: #fff;                           /* color del texto */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
+  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
+}
+
+.recuadro-servicio:hover {
+  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
+}
+
+.recuadro-servicio h6 {
+  margin-top :20px; 
+  color: rgb(235, 215, 102);;     /* color del título del cuarto menu */
+  text-align: center;
+  font-size:clamp(4rem, 4vw, 3.5rem);
+  
+}
+.recuadro-servicio h6 u {
+  text-decoration-color:rgb(235, 215, 102);
+}
+
+.recuadro-servicio p {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5;
+}
+
+.recuadro-servicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
+  border-radius: 15px;                  /* bordes redondeados */
+  padding: 30px 50px 200px, 50px;       /* espacio interno */
+  max-width: 400px;                     /* ancho máximo */
+  min-height: 450px;                     /* altura mínima */    
+  margin: 70px auto;                     /* centrado horizontal */
+  text-align: center;
+  color: #fff;                           /* color del texto */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
+  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
+}
+
+.recuadro-servicio:hover {
+  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
+}
+
+.recuadro-servicio h7 {
+  margin-top :20px; 
+  color: rgb(235, 215, 102);;     /* color del título del cuarto menu */
+  text-align: center;
+  font-size:clamp(4rem, 4vw, 3.5rem);
+  
+}
+.recuadro-servicio h7 u {
+  text-decoration-color:rgb(235, 215, 102);
+}
+
+.recuadro-servicio p {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5;
+}
+
+/* BOTON  DE WPP*/  
+.btnPedido {
+  display: block;
+  margin: 10px auto;
+  width: 50%; ;
+  font-size: 0.9em;
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #09f5586a;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
