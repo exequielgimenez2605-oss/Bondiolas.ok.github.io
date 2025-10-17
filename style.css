@@ -1,315 +1,226 @@
-/* BOX-SIZING para que padding no rompa el ancho */
+/* ==================== */
+/* CONFIGURACIÓN GLOBAL */
+/* ==================== */
+
+/* Reset de márgenes y paddings y box-sizing para todos los elementos */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Body y html: scroll solo vertical */
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  background-color: #000;
-  font-family: 'Tangerine', cursive;
+/* Tamaño base de fuente */
+html {
+  font-size: 16px;
 }
 
-/* Contenedor de la  imagen */
+/* Configuración general de la página */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* evita scroll horizontal */
+  background-color: #000; /* fondo negro */
+  font-family: 'Tangerine', cursive; /* fuente principal */
+}
+
+/* ==================== */
+/* SECCIÓN IMAGEN PRINCIPAL */
+/* ==================== */
+
+/* Contenedor de la imagen principal y el título */
 .contenedor-imagen {
-  position: relative;
+  position: relative; /* para posicionar título encima */
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
 }
-/* Imagen principal con efecto de desenfoque y brillo */
+
+/* Imagen principal */
 .contenedor-imagen img {
-  width: 100%;
-  height: auto;
+  width: 100%;       /* ocupa todo el ancho */
+  height: 50vh;      /* altura inicial para celular */
   display: block;
-  filter: brightness(0.9) blur(5px);
+  object-fit: cover; /* mantiene proporción y recorta si es necesario */
+  filter: brightness(0.9) blur(5px); /* efecto de oscuridad y desenfoque */
 }
 
-/* Título principal sin efecto de fuego */
+/* Ajustes para tablet */
+@media (min-width: 768px) {
+  .contenedor-imagen img {
+    height: 60vh; /* un poco más alto en tablet */
+  }
+}
+
+/* Ajustes para PC */
+@media (min-width: 1200px) {
+  .contenedor-imagen img {
+    height: 88vh;       /* altura mayor en PC */
+    max-height: 800px;  /* límite para pantallas muy grandes */
+  }
+}
+
+/* Título encima de la imagen */
 .contenedor-imagen h1 {
-  position: absolute;
-  top: 46%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;          /* posicionamiento sobre la imagen */
+  top: 45%;                    /* centrado vertical */
+  left: 50%;                   /* centrado horizontal */
+  transform: translate(-50%, -50%); /* ajuste exacto del centro */
   width: 100%;
   text-align: center;
-  font-size: clamp(5.5rem, 6vw, 5rem);
-  color: rgb(235, 215, 102);
-  text-shadow: 
+  font-size: 5rem;             /* tamaño base para celular */
+  color: rgb(235, 215, 102);   /* color del título */
+  text-shadow:                 /* sombra para resaltar sobre la imagen */
     2px 2px 4px rgba(0, 0, 0, 0.5),
     -2px -2px 4px rgba(0, 0, 0, 0.5),
     -2px 2px 4px rgba(0, 0, 0, 0.5),
-    2px -2px 4px rgba(0, 0, 0, 0.5);
-  font-style: italic;
-  z-index: 2;
-  pointer-events: none; 
-  animation: fadeIn 3s ease-in-out 1 forwards;
+    2px -2px rgba(0, 0, 0, 0.5);
+  font-style: italic;          /* estilo cursiva */
+  z-index: 2;                  /* encima de la imagen */
+  pointer-events: none;        /* no interfiere con clics */
+  animation: fadeIn 3s ease-in-out 1 forwards; /* animación de aparición */
 }
 
-/* Animación de inicio parpadeo*/
+/* Ajustes para tablet */
+@media (min-width: 768px) {
+  .contenedor-imagen h1 {
+    font-size: 6rem; /* un poquito más grande en tablet */
+  }
+}
+
+/* Ajustes para PC */
+@media (min-width: 1200px) {
+  .contenedor-imagen h1 {
+    font-size: clamp(10rem, 10vw, 15rem); /* título gigante en PC */
+  }
+}
+
+/* Animación de aparición del título */
 @keyframes fadeIn {
   from { opacity: 0; }   
   to   { opacity: 1; }  
 }
 
-/* Sección Sobre Nosotros */
+/* ==================== */
+/* SECCIÓN SOBRE NOSOTROS */
+/* ==================== */
+
+/* Contenedor principal */
 .Sobre-nosotros {
   width: 100%;
   margin: 5% auto;
   text-align: center;
 }
 
-/* Recuadro con el efecto fuego */
+/* Recuadro con efecto de fuego */
 .Sobre-nosotros .recuadro-fuego {
-  padding: 50px 40px;
-  border-radius:30px;
-  width: 96%;
-  max-width: 1200px;
-  min-height: 100px;
+  padding: clamp(30px, 5vw, 50px); /* adaptable según pantalla */
+  border-radius: 30px;
+  width: 90%;        
+  max-width: 1070px; 
+  min-height: 120px;
   margin: 0 auto;
   text-align: center;
   color: white;
   position: relative;
-  background: rgba(0,0,0,0.6);
-  box-shadow: 0 0 30px #ff6600, 0 0 60px #ff3300, 0 0 90px #ff0000;
-  animation: fuego 1s infinite alternate;
+  background: rgba(0,0,0,0.6); /* fondo semi-transparente */
+  box-shadow: 0 0 30px #ff6600, 0 0 60px #ff3300, 0 0 90px #ff0000; /* efecto fuego */
+  animation: fuego 1s infinite alternate; /* animación de fuego */
 }
 
-/* Animación de fuego del recuadro */
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 500px) {
+  .Sobre-nosotros .recuadro-fuego {
+    width: 90%;           
+    padding: clamp(15px, 3vw, 30px);
+  }
+}
+
+/* Animación de fuego */
 @keyframes fuego {
-  0% {
-    box-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300, 0 0 30px #ff0000;
-  }
-  50% {
-    box-shadow: 0 0 20px #ff9900, 0 0 40px #ff6600, 0 0 60px #ff3300;
-  }
-  100% {
-    box-shadow: 0 0 15px #ffcc00, 0 0 30px #ff9900, 0 0 45px #ff6600;
-  }
+  0% { box-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300, 0 0 30px #ff0000; }
+  50% { box-shadow: 0 0 20px #ff9900, 0 0 40px #ff6600, 0 0 60px #ff3300; }
+  100% { box-shadow: 0 0 15px #ffcc00, 0 0 30px #ff9900, 0 0 45px #ff6600; }
 }
 
 /* Título dentro del recuadro */
 .Sobre-nosotros .recuadro-fuego h2 {
   color: orange;
-  font-size: clamp(3.5rem, 4vw, 3.5rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   margin-bottom: 20px;
   text-shadow: 0 0 5px #ff4d00, 0 0 10px #ff6600, 0 0 20px #ff0000;
 }
 
 /* Párrafo dentro del recuadro */
 .Sobre-nosotros .recuadro-fuego p {
-  font-size: clamp(2.3rem, 2.5vw, 2rem);
+  font-size: clamp(2rem, 4vw, 2rem);
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* Recuadros para servicio 1 */
-.recuadro-servicio {
+/* ==================== */
+/* SECCIÓN SERVICIOS */
+/* ==================== */
+
+/* Contenedor de servicios */
+.servicios {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
-  border-radius: 15px;                  /* bordes redondeados */
-  padding: 30px 50px 200px, 50px;       /* espacio interno */
-  max-width: 400px;                     /* ancho máximo */
-  min-height: 450px;                     /* altura mínima */    
-  margin: 70px auto;                     /* centrado horizontal */
-  text-align: center;
-  color: #fff;                           /* color del texto */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
-  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: clamp(30px, 5vw, 50px) clamp(20px, 3vw, 50px);
 }
 
-.recuadro-servicio:hover {
-  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
-}
-
-.recuadro-servicio h3 {
-  margin-top :20px; 
-  color: rgb(235, 215, 102);;     /* color del título del primer menu */
-  text-align: center;
-  font-size:clamp(4rem, 4vw, 3.5rem);
-  
-}
-.recuadro-servicio h3 u {
-  text-decoration-color:rgb(235, 215, 102);
-}
-
-.recuadro-servicio p {
-  font-family:Arial, Helvetica, sans-serif;
-  ;
-  font-size: 1.3em;
-  line-height: 1.5;
-}
+/* Cada recuadro de servicio */
 .recuadro-servicio {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
-  border-radius: 15px;                  /* bordes redondeados */
-  padding: 30px 50px 200px, 50px;       /* espacio interno */
-  max-width: 400px;                     /* ancho máximo */
-  min-height: 450px;                     /* altura mínima */    
-  margin: 70px auto;                     /* centrado horizontal */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: clamp(20px, 3vw, 40px);
+  width: 90%;
+  max-width: 350px;
+  min-height: 420px;
   text-align: center;
-  color: #fff;                           /* color del texto */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
-  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Hover sobre recuadro de servicio */
 .recuadro-servicio:hover {
-  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
-.recuadro-servicio h4 {
-  margin-top :20px; 
-  color: rgb(235, 215, 102);;     /* color del título del segundo  menu */
-  text-align: center;
-  font-size:clamp(4rem, 4vw, 3.5rem);
-  
-}
-.recuadro-servicio h4 u {
-  text-decoration-color:rgb(235, 215, 102);
-}
-
-.recuadro-servicio p {
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: 1.3em;
-  line-height: 1.5;
-}
-.recuadro-servicio {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
-  border-radius: 15px;                  /* bordes redondeados */
-  padding: 30px 50px 200px, 50px;       /* espacio interno */
-  max-width: 400px;                     /* ancho máximo */
-  min-height: 450px;                     /* altura mínima */    
-  margin: 70px auto;                     /* centrado horizontal */
-  text-align: center;
-  color: #fff;                           /* color del texto */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
-  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
-}
-
-.recuadro-servicio:hover {
-  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
-}
-
-.recuadro-servicio h5 {
-  margin-top :20px; 
-  color: rgb(235, 215, 102);;     /* color del título del tercer  menu */
-  text-align: center;
-  font-size:clamp(4rem, 4vw, 3.5rem);
-  
-}
-.recuadro-servicio h5 u {
-  text-decoration-color:rgb(235, 215, 102);
-}
-
-.recuadro-servicio p {
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: 1.3em;
-  line-height: 1.5;
-}
-
-
-.btnPedido:hover {
-  background-color: #0d0e0e;
-
-}
-.recuadro-servicio {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
-  border-radius: 15px;                  /* bordes redondeados */
-  padding: 30px 50px 200px, 50px;       /* espacio interno */
-  max-width: 400px;                     /* ancho máximo */
-  min-height: 450px;                     /* altura mínima */    
-  margin: 70px auto;                     /* centrado horizontal */
-  text-align: center;
-  color: #fff;                           /* color del texto */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
-  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
-}
-
-.recuadro-servicio:hover {
-  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
-}
-
-.recuadro-servicio h6 {
-  margin-top :20px; 
-  color: rgb(235, 215, 102);;     /* color del título del cuarto menu */
-  text-align: center;
-  font-size:clamp(4rem, 4vw, 3.5rem);
-  
-}
-.recuadro-servicio h6 u {
-  text-decoration-color:rgb(235, 215, 102);
-}
-
-.recuadro-servicio p {
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: 1.3em;
-  line-height: 1.5;
-}
-
-.recuadro-servicio {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: rgba(255, 255, 255, 0.1); /* fondo semitransparente */
-  border-radius: 15px;                  /* bordes redondeados */
-  padding: 30px 50px 200px, 50px;       /* espacio interno */
-  max-width: 400px;                     /* ancho máximo */
-  min-height: 450px;                     /* altura mínima */    
-  margin: 70px auto;                     /* centrado horizontal */
-  text-align: center;
-  color: #fff;                           /* color del texto */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* sombra suave */
-  transition: transform 0.3s, box-shadow 0.3s; /* efecto hover */
-}
-
-.recuadro-servicio:hover {
-  transform: translateY(-10px);           /* eleva un poco al pasar el mouse */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* sombra más fuerte */
-}
-
+/* Títulos dentro del recuadro de servicio */
+.recuadro-servicio h3,
+.recuadro-servicio h4,
+.recuadro-servicio h5,
+.recuadro-servicio h6,
 .recuadro-servicio h7 {
-  margin-top :20px; 
-  color: rgb(235, 215, 102);;     /* color del título del cuarto menu */
+  margin-top: 20px;
+  color: rgb(235, 215, 102);
   text-align: center;
-  font-size:clamp(4rem, 4vw, 3.5rem);
-  
-}
-.recuadro-servicio h7 u {
-  text-decoration-color:rgb(235, 215, 102);
+  font-size: clamp(3rem, 5vw, 4rem);
 }
 
+/* Párrafos dentro del recuadro de servicio */
 .recuadro-servicio p {
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: 1.3em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.5;
+  margin-top: 15px;
 }
 
-/* BOTON  DE WPP*/  
+/* ==================== */
+/* BOTÓN DE WHATSAPP */
+/* ==================== */
+
+/* Botón principal */
 .btnPedido {
   display: block;
   margin: 10px auto;
-  width: 50%; ;
-  font-size: 0.9em;
-  margin-top: 10px;
-  padding: 12px 20px;
+  width: 50%;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  padding: clamp(10px, 1.5vw, 15px) clamp(15px, 3vw, 25px);
   background-color: #09f5586a;
   color: white;
   font-weight: bold;
@@ -317,4 +228,36 @@ html, body {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+/* Hover del botón */
+.btnPedido:hover {
+  background-color: #0d0e0e;
+}
+/* Burbuja flotante derecha, estática arriba */
+.burbuja-derecha {
+  position: fixed;
+  top: 20px;       /* distancia desde arriba */
+  right: 10px;     /* distancia desde la derecha */
+  width: 45px;
+  height: 45px;
+  background-color: #00000000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+  font-size: 0; /* evita herencia de fuente gigante */
+}
+
+.burbuja-derecha img {
+  width: 25px;
+  height: 25px;
+}
+
+.burbuja-derecha:hover {
+  transform: scale(1.2);
 }
