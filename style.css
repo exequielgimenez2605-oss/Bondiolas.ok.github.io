@@ -66,7 +66,7 @@ html, body {
   transform: translate(-50%, -50%); /* ajuste exacto del centro */
   width: 100%;
   text-align: center;
-  font-size: 5rem;             /* tamaño base para celular */
+  font-size: 4rem;             /* tamaño base para celular */
   color: rgb(235, 215, 102);   /* color del título */
   text-shadow:                 /* sombra para resaltar sobre la imagen */
     2px 2px 4px rgba(0, 0, 0, 0.5),
